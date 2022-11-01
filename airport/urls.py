@@ -19,7 +19,8 @@ from flights.views import FlightsListView, BookingsListView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('flight/list', FlightsListView.as_view(), name='flights-list'),
-    path('flight/bookings', BookingsListView.as_view(), name='bookings'),
+    path('flight/list/', FlightsListView.as_view(), name='flights-list'),
+    path('flight/bookings/', BookingsListView.as_view(), name='bookings'),
+    path('flight/bookings/<int:booking_id>/', BookingsListView.as_view(), name='bookings'),
 
 ]
