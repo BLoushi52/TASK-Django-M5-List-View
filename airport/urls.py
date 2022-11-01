@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from users.views import UserCreateAPIView, UserLoginAPIView
 from flights.views import BookingDestroyView, BookingDetailView, BookingUpdateView, FlightsListView, BookingsListView
 
 urlpatterns = [
@@ -22,7 +23,12 @@ urlpatterns = [
     path('flight/list/', FlightsListView.as_view(), name='flights-list'),
     path('flight/bookings/', BookingsListView.as_view(), name='bookings-list'),
     path('flight/bookings/<int:booking_id>/', BookingDetailView.as_view(), name='booking-detail'),
-    path('flight/bookings/<int:booking_id>/update', BookingUpdateView.as_view(), name='booking-update'),
-    path('flight/bookings/<int:booking_id>/destroy', BookingDestroyView.as_view(), name='booking-destroy'),
+    path('flight/bookings/<int:booking_id>/update/', BookingUpdateView.as_view(), name='booking-update'),
+    path('flight/bookings/<int:booking_id>/destroy/', BookingDestroyView.as_view(), name='booking-destroy'),
+
+
+    path('register/', UserCreateAPIView.as_view(), name='register'),
+    path('signin/', UserLoginAPIView.as_view(), name='signin'),
+    # path('signout/', UserCreateAPIView.as_view(), name='signout'),
 
 ]
